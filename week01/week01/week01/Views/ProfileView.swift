@@ -54,10 +54,9 @@ struct ProfileView: View {
             }
             
             Text("iOS Developer")
-            .font(.pretendard(.regular, size: 15))
+                .font(.pretendard(.regular, size: 15))
             
             VStack {
-                
                 HStack{
                     Button(action: {
                         print("Button tapped")
@@ -107,6 +106,8 @@ struct ProfileView: View {
             }
         }
         .padding(.horizontal, 16)
+        .padding(.bottom, 20)
+        FeedView()
     }
 }
 
