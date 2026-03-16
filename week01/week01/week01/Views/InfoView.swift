@@ -9,8 +9,15 @@ import SwiftUI
 
 struct InfoView: View {
     
+    // MARK: - Properties
+    
+    let username: String
+    
+    // MARK: - Body
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
+            
             HStack{
                 Image(.cat4)
                     .resizable()
@@ -24,30 +31,13 @@ struct InfoView: View {
                 
                 VStack(alignment: .leading, spacing: 10){
                     
-                    Text("조영서")
+                    Text(username)
                         .font(.pretendard(.semibold, size: 15))
                     
                     HStack(spacing: 40){
-                        VStack(alignment: .leading){
-                            Text("8")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("게시물")
-                                .font(.pretendard(.regular, size: 15))
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Text("235")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("팔로워")
-                                .font(.pretendard(.regular, size: 15))
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Text("235")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("팔로잉")
-                                .font(.pretendard(.regular, size: 15))
-                        }
+                        profileCount("8", "게시물")
+                        profileCount("235", "팔로워")
+                        profileCount("235", "팔로잉")
                     }
                 }
                 .padding(.leading, 40)
@@ -58,8 +48,9 @@ struct InfoView: View {
             
             VStack {
                 HStack{
+                    
                     Button(action: {
-                        print("Button tapped")
+                        print("프로필 편집")
                     }) {
                         Text("프로필 편집")
                             .font(.pretendard(.regular, size: 15))
@@ -77,7 +68,7 @@ struct InfoView: View {
                     Spacer()
                     
                     Button(action: {
-                        print("Button tapped")
+                        print("프로필 공유")
                     }) {
                         Text("프로필 공유")
                             .font(.pretendard(.regular, size: 15))
@@ -89,7 +80,7 @@ struct InfoView: View {
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius:10)
-                            .stroke(Color.gray, lineWidth: 1)
+                            .stroke(.gray, lineWidth: 1)
                     )
                     
                     Spacer()
@@ -100,15 +91,27 @@ struct InfoView: View {
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius:10)
-                                .stroke(Color.gray, lineWidth: 1)
+                                .stroke(.gray, lineWidth: 1)
                         )
                 }
             }
         }
         .padding(.horizontal, 16)
     }
+    
+    // MARK: - Subview
+    
+    func profileCount(_ count: String, _ title: String) -> some View {
+        VStack(alignment: .leading){
+            Text(count)
+                .font(.pretendard(.bold, size: 15))
+            
+            Text(title)
+                .font(.pretendard(.regular, size: 15))
+        }
+    }
 }
 
 #Preview {
-    InfoView()
+    InfoView(username: "youngseo")
 }
