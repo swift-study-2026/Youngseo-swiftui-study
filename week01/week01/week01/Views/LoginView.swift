@@ -14,7 +14,7 @@ struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var moveToProfile: Bool = false
-    
+    @State private var showPasswordAlert = false
     
     // MARK: - Body
     
@@ -52,10 +52,20 @@ struct LoginView: View {
                 .padding(.top, 40)
                 .padding(.bottom, 20)
                 
-                Text("비밀번호를 잊으셨나요?")
-                    .font(.pretendard(.medium, size: 15))
-                    .foregroundColor(.blue)
-                    .padding(.bottom, 150)
+                Button {
+                    showPasswordAlert = true
+                } label: {
+                    Text("비밀번호를 잊으셨나요?")
+                        .font(.pretendard(.medium, size: 15))
+                        .foregroundColor(.blue)
+                }
+                .padding(.bottom, 150)
+                
+                .alert("비밀번호 재설정", isPresented: $showPasswordAlert) {
+                    Button("확인", role: .cancel) { }
+                } message: {
+                    Text("비밀번호 재설정 페이지로 이동하시겠습니까?")
+                }
 
                 Spacer()
             }
