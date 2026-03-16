@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    // MARK: - Properties
+    
     let username: String
+    @State private var showSheet = false
+    
+    // MARK: - Body
     
     var body: some View {
         VStack(spacing: 20){
@@ -21,10 +26,14 @@ struct ProfileView: View {
         .toolbar {
             
             ToolbarItem(placement: .topBarLeading) {
-                Image(.instagramIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24, height: 24)
+                Button {
+                    showSheet = true
+                } label: {
+                    Image(.instagramIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 24, height: 24)
+                }
             }
             
             ToolbarItem(placement: .topBarTrailing) {
@@ -33,6 +42,22 @@ struct ProfileView: View {
                     Image(systemName: "line.3.horizontal")
                 }
             }
+        }
+        
+        // MARK: - Sheet
+        
+        .sheet(isPresented: $showSheet) {
+            VStack {
+                
+                Text("수민언니 바보ㅋㅋ")
+                    .font(.pretendard(.medium, size: 20))
+                    .padding()
+                
+                Button("닫기") {
+                    showSheet = false
+                }
+            }
+            .presentationDetents([.medium])
         }
     }
 }
