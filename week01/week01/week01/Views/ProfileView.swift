@@ -9,14 +9,36 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    let username: String
+    
     var body: some View {
         VStack(spacing: 20){
-            InfoView()
+            InfoView(username: username)
             FeedView()
+        }
+        .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            
+            ToolbarItem(placement: .topBarLeading) {
+                Image(.instagramIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            }
+            
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack(spacing: 20) {
+                    Image(systemName: "plus.square")
+                    Image(systemName: "line.3.horizontal")
+                }
+            }
         }
     }
 }
 
 #Preview {
-    ProfileView()
+    NavigationStack {
+        ProfileView(username: "영돌이")
+    }
 }
