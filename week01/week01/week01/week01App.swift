@@ -11,7 +11,7 @@ import SwiftUI
 struct week01App: App {
     var body: some Scene {
         WindowGroup {
-            ProfileView()
+            LoginView()
         }
     }
 }

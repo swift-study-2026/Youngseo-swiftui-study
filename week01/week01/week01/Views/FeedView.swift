@@ -8,14 +8,18 @@
 import SwiftUI
 
 // MARK: - Model
+
 struct Post: Identifiable {
     let id = UUID()
     let image: ImageResource
 }
 
-// MARK: - View
-struct FeedView: View {
+// MARK: - FeedView
 
+struct FeedView: View {
+    
+    // MARK: - Properties
+    
     let columns = [
         GridItem(.flexible(), spacing: 1),
         GridItem(.flexible(), spacing: 1),
@@ -44,6 +48,8 @@ struct FeedView: View {
         Post(image: .cat2),
         Post(image: .cat8)
     ]
+
+    // MARK: - Body
 
     var body: some View {
 

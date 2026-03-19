@@ -9,108 +9,75 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    // MARK: - Properties
+    
+    let username: String
+    @State private var showSheet = false
+    @State private var moveToExample: Bool = false
+    
+    // MARK: - Body
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10){
-            HStack{
-                Image(.cat4)
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .aspectRatio(contentMode: .fit)
-                    .overlay(
-                        Circle()
-                            .stroke(.gray, lineWidth: 1)
-                    )
-                    .clipShape(Circle())
+        NavigationStack {
+            
+            VStack(spacing: 20){
+                InfoView(username: username)
+                FeedView()
+            }
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
                 
-                VStack(alignment: .leading, spacing: 10){
-                    
-                    Text("조영서")
-                        .font(.pretendard(.semibold, size: 15))
-                    
-                    HStack(spacing: 40){
-                        VStack(alignment: .leading){
-                            Text("8")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("게시물")
-                                .font(.pretendard(.regular, size: 15))
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Text("235")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("팔로워")
-                                .font(.pretendard(.regular, size: 15))
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Text("235")
-                                .font(.pretendard(.bold, size: 15))
-                            Text("팔로잉")
-                                .font(.pretendard(.regular, size: 15))
-                        }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showSheet = true
+                    } label: {
+                        Image(.instagramIcon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 24, height: 24)
                     }
                 }
-                .padding(.leading, 40)
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack(spacing: 20) {
+                        Button {
+                            moveToExample = true
+                        } label: {
+                            Image(systemName: "plus.square")
+                        }
+                        Image(systemName: "line.3.horizontal")
+                    }
+                }
             }
             
-            Text("iOS Developer")
-                .font(.pretendard(.regular, size: 15))
+            // MARK: - Sheet
             
-            VStack {
-                HStack{
-                    Button(action: {
-                        print("Button tapped")
-                    }) {
-                        Text("프로필 편집")
-                            .font(.pretendard(.regular, size: 15))
-                            .foregroundColor(.black)
+            .sheet(isPresented: $showSheet) {
+                VStack {
+                    
+                    Text("수민언니 바보ㅋㅋ")
+                        .font(.pretendard(.medium, size: 20))
+                        .padding()
+                    
+                    Button("닫기") {
+                        showSheet = false
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius:10)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        print("Button tapped")
-                    }) {
-                        Text("프로필 공유")
-                            .font(.pretendard(.regular, size: 15))
-                            .foregroundColor(.black)
-                    }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius:10)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    
-                    Spacer()
-                    
-                    Image(systemName: "person.badge.plus")
-                        .frame(width: 40, height: 34)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .overlay(
-                            RoundedRectangle(cornerRadius:10)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
                 }
+                .presentationDetents([.medium])
+            }
+            
+            // MARK: - Navigation
+            
+            .navigationDestination(isPresented: $moveToExample) {
+                ExampleView()
             }
         }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 20)
-        FeedView()
     }
 }
 
 #Preview {
-    ProfileView()
+    NavigationStack {
+        ProfileView(username: "영돌이")
+    }
 }
