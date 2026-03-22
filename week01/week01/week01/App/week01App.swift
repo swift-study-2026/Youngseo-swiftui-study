@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct week01App: App {
+    
+    @State private var appState = AppState()
+    
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            RootView()
+                .environment(appState)
         }
     }
 }
