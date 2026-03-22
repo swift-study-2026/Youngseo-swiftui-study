@@ -11,7 +11,7 @@ struct ProfileView: View {
     
     // MARK: - Properties
     
-    @Environment(AppState.self) private var appState
+    let username: String
     @State private var showSheet = false
     @State private var moveToExample: Bool = false
     
@@ -19,7 +19,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            ProfileInfoView(username: appState.username)
+            ProfileInfoView(username: username)
             ProfileFeedView()
         }
         .navigationTitle("Profile")
@@ -49,9 +49,6 @@ struct ProfileView: View {
                 }
             }
         }
-        
-        // MARK: - Sheet
-        
         .sheet(isPresented: $showSheet) {
             VStack {
                 Text("수민언니 바보ㅋㅋ")
@@ -64,9 +61,6 @@ struct ProfileView: View {
             }
             .presentationDetents([.medium])
         }
-        
-        // MARK: - Navigation
-        
         .navigationDestination(isPresented: $moveToExample) {
             ExampleView()
         }
@@ -75,7 +69,6 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView()
-            .environment(AppState())
+        ProfileView(username: "영돌이")
     }
 }
