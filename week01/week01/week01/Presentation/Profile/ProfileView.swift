@@ -11,7 +11,7 @@ struct ProfileView: View {
     
     // MARK: - Properties
     
-    let username: String
+    @Environment(AppState.self) private var appState
     @State private var showSheet = false
     @State private var moveToExample: Bool = false
     
@@ -19,7 +19,7 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            ProfileInfoView(username: username)
+            ProfileInfoView(username: appState.username)
             ProfileFeedView()
         }
         .navigationTitle("Profile")
@@ -75,6 +75,7 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView(username: "영돌이")
+        ProfileView()
+            .environment(AppState())
     }
 }

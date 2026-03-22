@@ -13,14 +13,5 @@ final class LoginViewModel {
     var username: String = ""
     var password: String = ""
     
-    var moveToProfile: Bool = false
     var showPasswordAlert: Bool = false
-    
-    func login() {
-        moveToProfile = true
-    }
-    
-    func tapForgotPassword() {
-        showPasswordAlert = true
-    }
 }
