@@ -19,8 +19,8 @@ struct ProfileView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            InfoView(username: username)
-            FeedView()
+            ProfileInfoView(username: username)
+            ProfileFeedView()
         }
         .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)

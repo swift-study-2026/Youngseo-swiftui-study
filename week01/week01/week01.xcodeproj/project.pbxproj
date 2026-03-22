@@ -14,7 +14,7 @@
 		3A7FB2C52F5C0EB7002FCDC2 /* Exceptions for "week01" folder in "week01" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				App/Info.plist,
 			);
 			target = 3A5511DA2F548E33002E573E /* week01 */;
 		};
@@ -269,7 +269,7 @@
 				DEVELOPMENT_TEAM = 25T76RX27Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = week01/Info.plist;
+				INFOPLIST_FILE = week01/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,7 +302,7 @@
 				DEVELOPMENT_TEAM = 25T76RX27Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = week01/Info.plist;
+				INFOPLIST_FILE = week01/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

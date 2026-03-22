@@ -16,7 +16,7 @@ struct Post: Identifiable {
 
 // MARK: - FeedView
 
-struct FeedView: View {
+struct ProfileFeedView: View {
     
     // MARK: - Properties
     
@@ -79,5 +79,5 @@ struct FeedView: View {
 }
 
 #Preview {
-    FeedView()
+    ProfileFeedView()
 }
