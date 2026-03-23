@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InfoView: View {
+struct ProfileInfoView: View {
     
     // MARK: - Properties
     
@@ -113,5 +113,5 @@ struct InfoView: View {
 }
 
 #Preview {
-    InfoView(username: "youngseo")
+    ProfileInfoView(username: "youngseo")
 }
