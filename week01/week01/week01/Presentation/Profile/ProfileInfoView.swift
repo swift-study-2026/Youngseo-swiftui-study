@@ -49,39 +49,11 @@ struct ProfileInfoView: View {
             VStack {
                 HStack{
                     
-                    Button(action: {
-                        print("프로필 편집")
-                    }) {
-                        Text("프로필 편집")
-                            .font(.pretendard(.regular, size: 15))
-                            .foregroundColor(.black)
-                    }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius:10)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-                    
+                    profileButton("프로필 편집",action: {print("프로필 편집")})
+
                     Spacer()
                     
-                    Button(action: {
-                        print("프로필 공유")
-                    }) {
-                        Text("프로필 공유")
-                            .font(.pretendard(.regular, size: 15))
-                            .foregroundColor(.black)
-                    }
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius:10)
-                            .stroke(.gray, lineWidth: 1)
-                    )
+                    profileButton("프로필 공유",action: {print("프로필 공유")})
                     
                     Spacer()
                     
@@ -110,6 +82,34 @@ struct ProfileInfoView: View {
                 .font(.pretendard(.regular, size: 15))
         }
     }
+    
+    func profileButton(_ title: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Text(title)
+                .font(.pretendard(.regular, size: 15))
+                .foregroundColor(.black)
+                .padding(.horizontal, 40)
+                .padding(.vertical, 8)
+                .frame(maxWidth: .infinity)
+                .background(Color(.systemGray6))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.gray, lineWidth: 1)
+                )
+                .buttonStyle(AnimationStyle())
+        }
+    }
+    
+    // MARK: - Styles
+    private struct AnimationStyle: ButtonStyle {
+        
+        func makeBody(configuration: Configuration) -> some View {
+            configuration.label
+                .animation(.easeInOut(duration: 0.15), value: configuration.isPressed)
+        }
+    }
+    
 }
 
 #Preview {
