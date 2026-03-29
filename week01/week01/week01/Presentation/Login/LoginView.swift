@@ -40,7 +40,7 @@ struct LoginView: View {
 
             CTAButton(
                 title: "로그인",
-                backgroundColor: .blue,
+                backgroundColor: viewModel.isValid ? .blue : .gray,
                 textColor: .white
             ) {
                 appState.isLoggedIn = true
@@ -48,6 +48,7 @@ struct LoginView: View {
             }
             .padding(.top, 40)
             .padding(.bottom, 20)
+            .disabled(!viewModel.isValid)
             
             Button {
                 viewModel.showPasswordAlert = true

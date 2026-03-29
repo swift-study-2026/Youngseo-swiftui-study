@@ -15,7 +15,7 @@ struct AppTabView: View {
         TabView {
             
             NavigationStack {
-                Text("Home")
+                HomeView()
             }
             .tabItem {
                 Image(systemName: "house")

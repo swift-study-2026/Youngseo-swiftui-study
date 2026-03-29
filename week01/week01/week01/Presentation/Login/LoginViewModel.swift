@@ -14,4 +14,9 @@ final class LoginViewModel {
     var password: String = ""
     
     var showPasswordAlert: Bool = false
+    
+    var isValid: Bool {
+        !username.isEmpty && !password.isEmpty
+//      username.count >= 3 && password.count >= 6
+    }
 }
